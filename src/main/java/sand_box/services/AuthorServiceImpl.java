@@ -37,7 +37,7 @@ public class AuthorServiceImpl implements AuthorService {
     private PhotoRepository photoRepository;
 
     static final int DEFAULT_ID = -1;
-    private static final String PATH = "/Users/Zinoviy/Desktop/Project_QR/pictures/author";
+    private static final String PATH = "pictures/author";
     private static final String URL    = "/author/photo";
     private static final String SMALL = "300";
     private static final String MIDDLE = "900";

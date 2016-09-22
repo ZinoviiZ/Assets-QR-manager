@@ -17,10 +17,6 @@ import java.util.Set;
 @RestController
 @RequestMapping("/asset")
 public class RestAssetController {
-
-    static final int DEFAULT_ID = -1;
-
-    private final String PNG = ".png";
     @Autowired
     private AssetService assetService;
 

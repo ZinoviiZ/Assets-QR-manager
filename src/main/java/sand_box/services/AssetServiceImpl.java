@@ -27,10 +27,10 @@ import java.util.Set;
  */
 @Service
 public class AssetServiceImpl implements AssetService {
-    private static final String PATHmain = "/Users/Zinoviy/Desktop/Project_QR/pictures/asset/main";
+    private static final String PATHmain = "pictures/asset/main";
     private static final String URLmain    = "/asset/photo/main";
-    private static final String PATH = "/Users/Zinoviy/Desktop/Project_QR/pictures/asset";
-    private static final String PATHsecondary = "/Users/Zinoviy/Desktop/Project_QR/pictures/asset/secondary";
+    private static final String PATH = "pictures/asset";
+    private static final String PATHsecondary = "pictures/asset/secondary";
     private static final String URLsecondary    = "/asset/photo/secondary";
 
     @Autowired
