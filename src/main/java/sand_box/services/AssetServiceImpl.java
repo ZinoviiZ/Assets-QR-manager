@@ -11,9 +11,7 @@ import sand_box.repositories.AssetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sand_box.tables.Author;
 import sand_box.tables.images.MainPicture;
-import sand_box.tables.images.Photo;
 import sand_box.tables.images.Picture;
 
 import java.io.*;
@@ -54,7 +52,6 @@ public class AssetServiceImpl implements AssetService {
         return assetRepository.findAssetByTitle(title);
     }
 
-    //IMPROVE!!!
     @Override
     @Transactional
     public List<Asset> findByTag(String tag) {
@@ -103,14 +100,18 @@ public class AssetServiceImpl implements AssetService {
     @Transactional
     public void addMainPicture(long asset_id, MultipartFile file) throws IOException {
         String photo_name = String.valueOf(asset_id);
-        ImageConverter converter = new ImageConverter(PATHmain,file.getInputStream(), photo_name);
-        converter.converting();
-
-        Asset asset = assetRepository.findOne(asset_id);
-        MainPicture mainPicture = new MainPicture(photo_name+".png",PATHmain, URLmain+"/"+300+"/"+photo_name,
-                URLmain+"/"+900+"/"+photo_name, URLmain+"/"+2000+"/"+photo_name);
-        asset.setMainPicture(mainPicture);
-        mainPictureRepository.save(mainPicture);
+        try(InputStream stream = file.getInputStream()) {
+            ImageConverter converter = new ImageConverter(PATHmain, stream, photo_name);
+            converter.converting();
+            Asset asset = assetRepository.findOne(asset_id);
+            MainPicture mainPicture = new MainPicture(photo_name + ".png", PATHmain, URLmain + "/" + 300 + "/" + photo_name,
+                    URLmain + "/" + 900 + "/" + photo_name, URLmain + "/" + 2000 + "/" + photo_name);
+            asset.setMainPicture(mainPicture);
+            mainPictureRepository.save(mainPicture);
+        }
+        catch (IOException e) {
+            System.out.println("Can`t save asset`s main picture");
+        }
     }
 
 
@@ -129,4 +130,44 @@ public class AssetServiceImpl implements AssetService {
         return result;
     }
 
+    @Override
+    @Transactional
+    public void addPictures(long asset_id, MultipartFile[] files) {
+        int secondname = 1;
+        for(MultipartFile file : files) {
+            String photo_name = String.valueOf(asset_id);
+            try(InputStream stream = file.getInputStream()) {
+                ImageConverter converter = new ImageConverter(PATHsecondary, stream, photo_name + "-" + secondname);
+                converter.converting();
+                Asset asset = assetRepository.findOne(asset_id);
+                Picture picture = new Picture(photo_name + "-" + secondname + ".png", PATHsecondary, URLsecondary + "/" + 300 + "/" + photo_name + "-" + secondname,
+                        URLsecondary + "/" + 900 + "/" + photo_name + "-" + secondname, URLsecondary + "/" + 2000 + "/" + photo_name + "-" + secondname);
+                asset.addPicture(picture);
+                pictureRepository.save(picture);
+                secondname++;
+            }
+            catch (IOException e) {
+                System.out.println("Can`t save assets pictures");
+            }
+        }
+    }
+
+    @Override
+    @Transactional
+    public byte[] getPictures(long size, String name){
+        name = name + ".png";
+        Picture picture = pictureRepository.getPictureForName(name);
+        File file = new File(picture.getPath() + "/" + size + "/" + picture.getName());
+        try(FileInputStream stream = new FileInputStream(file)) {
+            byte[] buffer = new byte[stream.available()];
+            while (stream.available() > 0) {
+                    stream.read(buffer);
+            }
+            return buffer;
+        }
+        catch (IOException e) {
+            System.out.println("Can`t save file");
+        }
+        return null;
+    }
 }

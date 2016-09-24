@@ -24,4 +24,6 @@ public interface AssetService {
     Set<String> getTags();
     void addMainPicture(long asset_id, MultipartFile photo) throws IOException;
     byte[] getMainPicture(long size, long id) throws IOException;
+    void addPictures(long asset_id, MultipartFile[] pictures);
+    byte[] getPictures(long size, String name);
 }

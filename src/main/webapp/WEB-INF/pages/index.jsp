@@ -52,6 +52,7 @@
             <td><b>Description</b></td>
             <td><b>Price</b></td>
             <td><b>Author</b></td>
+            <td><b>Pictures</b></td>
         </tr>
         </thead>
         <c:forEach items="${assets}" var="asset">
@@ -68,7 +69,9 @@
                         <td>Sam po sebe:)</td>
                     </c:otherwise>
                 </c:choose>
-
+                <td><c:forEach items="${asset.pictures}" var="picture">
+                    <img height="50" width="50" src="${picture.surl}">
+                </c:forEach> </td>
             </tr>
         </c:forEach>
     </table>
@@ -77,6 +80,7 @@
         <thead>
         <tr>
             <td><b>Photo</b></td>
+            <td><b>QR</b></td>
             <td><b>Name</b></td>
             <td><b>Phone</b></td>
             <td><b>Email</b></td>
@@ -86,10 +90,11 @@
         <c:forEach items="${authors}" var="author">
             <tr>
                 <td><img height="50" width="50" src="${author.photo.surl}"></td>
+                <td><img height="50" width="50" src="/author/qr/${author.id}"></td>
                 <td>${author.name}</td>
                 <td>${author.phone}</td>
                 <td>${author.email}</td>
-                <td>${author.website}</td>
+                <td><a href="${author.website}">website</a></td>
             </tr>
         </c:forEach>
     </table>

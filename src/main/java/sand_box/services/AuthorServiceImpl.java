@@ -115,14 +115,35 @@ public class AuthorServiceImpl implements AuthorService {
     @Transactional
     public byte[] getPhoto(long size, long id) throws IOException {
         Author author = authorRepository.findOne(id);
+        byte[] result = null;
         Photo photo = author.getPhoto();
         File file = new File(photo.getPath()+"/"+size+"/"+photo.getName());
-        FileInputStream stream = new FileInputStream(file);
-        byte[] result = new byte[stream.available()];
-        while(stream.available()>0) {
-            stream.read(result);
+        try(FileInputStream stream = new FileInputStream(file);) {
+            result = new byte[stream.available()];
+            while (stream.available() > 0) {
+                stream.read(result);
+            }
         }
-        stream.close();
+        catch (IOException e) {
+            System.out.println("Can`t get Photo");
+        }
+        return result;
+    }
+
+    @Override
+    @Transactional
+    public byte[] getQR(long id) {
+        byte[] result = null;
+        File file = new File(PATH+"/qr/"+id+".png");
+        try(FileInputStream stream = new FileInputStream(file);) {
+            result = new byte[stream.available()];
+            while (stream.available() > 0) {
+                stream.read(result);
+            }
+        }
+        catch (IOException e) {
+            System.out.println("Can`t get QR code");
+        }
         return result;
     }
 

@@ -26,13 +26,12 @@ public class Picture {
     }
 
 
-    public Picture(String name, String path, String surl, String murl, String burl, Asset asset) {
+    public Picture(String name, String path, String surl, String murl, String burl) {
         this.name = name;
         this.path = path;
         this.surl = surl;
         this.murl = murl;
         this.burl = burl;
-        this.asset = asset;
     }
 
     public long getId() {

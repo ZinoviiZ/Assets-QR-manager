@@ -39,11 +39,6 @@ public class Asset {
     private List<Picture> pictures = new ArrayList<>();
 
     @ElementCollection
-//    @CollectionTable(
-//            name="Tags",
-//            joinColumns=@JoinColumn(name="Asset")
-//    )
-//    @Column(name="tags")
     private List<String> tags;
 
     public Asset() {
@@ -56,15 +51,19 @@ public class Asset {
         this.author = author;
     }
 
-    public Asset(String title, String description, Author author, int price, Date date, MainPicture mainPicture, List<Picture> pictures, List<String> tags) {
+    public Asset(String title, String description, Author author, int price, Date date, MainPicture mainPicture, List<String> tags) {
         this.title = title;
         this.description = description;
         this.author = author;
         this.price = price;
         this.date = date;
         this.mainPicture = mainPicture;
-        this.pictures = pictures;
         this.tags = tags;
+    }
+
+    public void addPicture(Picture picture) {
+        pictures.add(picture);
+        picture.setAsset(this);
     }
 
     public long getId() {

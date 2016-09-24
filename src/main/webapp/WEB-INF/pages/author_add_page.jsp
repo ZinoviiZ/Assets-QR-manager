@@ -28,7 +28,7 @@
         <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Phone"></div>
         <div class="form-group"><input type="text" class="form-control" name="email" placeholder="Email"></div>
         <div class="form-group"><input type="text" class="form-control" name="website" placeholder="Website"></div>
-        <div class="form-group"><input type="file" name="image" ></div>
+        <div class="form-group"><input type="file" name="image" multiple accept="image/jpeg,image/png"></div>
         <div class="form-group"><input type="submit" class="btn btn-primary" value="Add"></div>
     </form>
 </div>

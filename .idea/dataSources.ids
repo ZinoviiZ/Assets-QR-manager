@@ -8,6 +8,34 @@
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
       <schema id="1" name="QR"/>
+      <table id="2" parent="1" name="Users"/>
+      <column id="3" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="4" parent="2" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="5" parent="2" name="last_seen_time">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="6" parent="2" name="login">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="7" parent="2" name="password">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="8" parent="2" name="registret_time">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="9" parent="2" name="role">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="10" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
     </database-model>
   </data-source>
 </component>

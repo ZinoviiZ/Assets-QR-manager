@@ -37,4 +37,6 @@ public interface AuthorService {
 
     byte[] getPhoto(long size, long author_id) throws IOException;
 
+    byte[] getQR(long id);
+
 }

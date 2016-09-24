@@ -87,12 +87,14 @@ public class UIController {
                            @RequestParam String description,
                            @RequestParam int price,
                            @RequestParam String tag,
-                           @RequestParam(value = "image")MultipartFile image,
+                           @RequestParam MultipartFile image,
+                           @RequestParam MultipartFile[] pictures,
                            Model model) throws IOException {
         Author author = (author_id!=DEFAULT_ID)  ? authorService.getAuthor(author_id) : null;
         List<String> tags = Arrays.asList(tag.split(" "));
-        long id = assetService.addAsset(new Asset(title,description,author,price, new Date(), null, null, tags));
+        long id = assetService.addAsset(new Asset(title,description,author,price, new Date(), null, tags));
         assetService.addMainPicture(id, image);
+        assetService.addPictures(id, pictures);
         model.addAttribute("assets", assetService.getAssets());
         model.addAttribute("authors", authorService.getAuthors());
         return "redirect:/";
@@ -130,19 +132,19 @@ public class UIController {
         return authorService.getAuthor(author.getId());
     }
 
-    @RequestMapping(value = "author/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/author/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteAuthor(@PathVariable("id") long id)
     {
         authorService.deleteAuthor(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "author/{id}/photo",method = RequestMethod.POST)
+    @RequestMapping(value = "/author/{id}/photo",method = RequestMethod.POST)
     public void addAuthorPhoto(@RequestParam(value = "image")MultipartFile image, @PathVariable("id") long id) throws IOException {
         authorService.addPhoto(id, image);
     }
 
-    @RequestMapping(value = "author/photo/{size}/{id}")
+    @RequestMapping(value = "/author/photo/{size}/{id}")
     public void getAuthorPhoto(HttpServletResponse response, @PathVariable("size")long size, @PathVariable("id") long id)
     {
         try {
@@ -155,15 +157,39 @@ public class UIController {
         }
     }
 
-    @RequestMapping(value = "asset/{id}/photo/main",method = RequestMethod.POST)
+    @RequestMapping(value = "/asset/{id}/photo/main",method = RequestMethod.POST)
     public void addAssetMainPhoto(@RequestParam(value = "image")MultipartFile image, @PathVariable("id") long id) throws IOException {
         assetService.addMainPicture(id, image);
     }
 
-    @RequestMapping(value = "asset/photo/main/{size}/{id}")
+    @RequestMapping(value = "/asset/photo/main/{size}/{id}")
     public void getAssetMainPhoto(HttpServletResponse response, @PathVariable("size")long size, @PathVariable("id") long id) {
         try {
             byte[] bytes = assetService.getMainPicture(size,id);
+            response.setContentType("image/png");
+            response.getOutputStream().write(bytes);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(value = "/asset/photo/secondary/{size}/{name}")
+    public void getAssetPictures(HttpServletResponse response, @PathVariable long size, @PathVariable String name) {
+        try {
+            byte[] bytes = assetService.getPictures(size, name);
+            response.setContentType("image/png");
+            response.getOutputStream().write(bytes);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(value = "/author/qr/{id}")
+    public void getAuthorQR(HttpServletResponse response, @PathVariable long id) {
+        try {
+            byte[] bytes = authorService.getQR(id);
             response.setContentType("image/png");
             response.getOutputStream().write(bytes);
         }

@@ -28,7 +28,8 @@
         <input class="form-control form-group" type="text" name="description" placeholder="Short description">
         <input class="form-control form-group" type="text" name="price" placeholder="Price">
         <input class="form-control form-group" type="text" name="tag" placeholder="Tags">
-        <div class="form-group"><input type="file" name="image" value="Add main picture"></div>
+        <input type="file" name="image" multiple accept="image/jpeg,image/png" value="Add main picture">
+        <input type="file" name="pictures" multiple accept="image/jpeg,image/png" value="Add pictures">
         <input type="submit" class="btn btn-primary" value="Add">
     </form>
 </div>
