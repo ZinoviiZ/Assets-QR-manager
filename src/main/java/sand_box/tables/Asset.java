@@ -20,6 +20,7 @@ public class Asset {
     @GeneratedValue
     private long id;
     private String title;
+    @Column(columnDefinition="TEXT")
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_author")

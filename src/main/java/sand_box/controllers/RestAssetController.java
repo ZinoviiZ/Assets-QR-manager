@@ -15,7 +15,7 @@ import java.util.Set;
  * Created by Zinoviy on 8/24/16.
  */
 @RestController
-@RequestMapping("/asset")
+@RequestMapping("/api/asset")
 public class RestAssetController {
     @Autowired
     private AssetService assetService;
@@ -24,6 +24,16 @@ public class RestAssetController {
     public Object getAsset(@RequestParam String title)
     {
         List<Asset> assets = assetService.findByTitle(title);
+        List<Object> result = new ArrayList<>();
+        for(Asset asset : assets) {
+            result.add(Factory.getAsset(asset));
+        }
+        return (result!= null) ? result : new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+    }
+
+    @RequestMapping(value = "/all")
+    public Object getAssets() {
+        List<Asset> assets = assetService.getAssets();
         List<Object> result = new ArrayList<>();
         for(Asset asset : assets) {
             result.add(Factory.getAsset(asset));

@@ -16,7 +16,7 @@ public class AuthorFactory {
             asset_ids.add(asset.getId());
         }
         Photo photo = new Photo(author.getPhoto().getSurl(),author.getPhoto().getMurl(),author.getPhoto().getBurl());
-        return new AuthorImpl(author.getName(),photo,author.getPhone(),author.getEmail(),
+        return new AuthorImpl(author.getId(), author.getName(),photo,author.getPhone(),author.getEmail(),
                 author.getWebsite(), asset_ids);
     }
 }
@@ -24,6 +24,7 @@ public class AuthorFactory {
 
 
 class AuthorImpl implements Author {
+    private long id;
     private String name;
     private Photo photo;
     private String phone;
@@ -31,13 +32,22 @@ class AuthorImpl implements Author {
     private String website;
     private List<Long> assetsid;
 
-    public AuthorImpl(String name, Photo photo, String phone, String email, String website, List<Long> assetsid) {
+    public AuthorImpl(long id, String name, Photo photo, String phone, String email, String website, List<Long> assetsid) {
+        this.id = id;
         this.name = name;
         this.photo = photo;
         this.phone = phone;
         this.email = email;
         this.website = website;
         this.assetsid = assetsid;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

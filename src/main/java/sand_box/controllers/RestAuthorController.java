@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Zinoviy on 8/24/16.
  */
 @RestController
-@RequestMapping("/author")
+@RequestMapping("/api/author")
 public class RestAuthorController {
 
     @Autowired

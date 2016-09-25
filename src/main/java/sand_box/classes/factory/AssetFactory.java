@@ -13,7 +13,9 @@ public class AssetFactory {
         for(sand_box.tables.images.Picture picture : asset.getPictures()) {
             photos.add(new Photo(picture.getSurl(),picture.getMurl(),picture.getBurl()));
         }
-        return new AssetImpl(asset.getId(),asset.getTitle(),asset.getDescription(),asset.getPrice(),main,photos);
+        String author = (asset.getAuthor()!=null) ? String.valueOf(asset.getAuthor().getId()) : null;
+        return new AssetImpl(asset.getId(),asset.getTitle(),asset.getDescription(),
+                author, asset.getPrice(),main,photos);
     }
 }
 
@@ -21,14 +23,16 @@ class AssetImpl implements Asset {
     private long id;
     private String title ;
     private String description ;
+    private String author;
     private long price ;
     private Photo main;
     private List<Photo> photos;
 
-    public AssetImpl(long id, String title, String description, long price, Photo main, List<Photo> photos) {
+    public AssetImpl(long id, String title, String description, String author, long price, Photo main, List<Photo> photos) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.author = author;
         this.price = price;
         this.main = main;
         this.photos = photos;
@@ -56,6 +60,14 @@ class AssetImpl implements Asset {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public long getPrice() {
