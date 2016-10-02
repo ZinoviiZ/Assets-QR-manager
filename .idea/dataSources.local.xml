@@ -7,5 +7,9 @@
       <schema-pattern>QR.*</schema-pattern>
       <default-schemas>QR.*</default-schemas>
     </data-source>
+    <data-source name="Heroku" uuid="c549308b-b184-4a1f-9739-a28fc55e5181">
+      <secret-storage>master_key</secret-storage>
+      <user-name>b26bb2027df42c</user-name>
+    </data-source>
   </component>
 </project>

@@ -20,6 +20,7 @@ public class Photo {
     private String murl;
     private String burl;
     public Photo() {
+
     }
 
     public Photo(String name, String path, String surl, String murl, String burl) {

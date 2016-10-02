@@ -89,7 +89,7 @@
         </thead>
         <c:forEach items="${authors}" var="author">
             <tr>
-                <td><img height="50" width="50" src="${author.photo.surl}"></td>
+                <td><img height="50" width="50" src="${author.photo.burl}"></td>
                 <td><img height="50" width="50" src="/author/qr/${author.id}"></td>
                 <td>${author.name}</td>
                 <td>${author.phone}</td>

@@ -2,8 +2,6 @@ package sand_box.services.pictures;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.ExecutorService;
@@ -28,11 +26,20 @@ public class ImageConverter {
         this.path = path;
     }
 
-    public void converting() {
+    public int converting() {
+        int n = 1;
         ExecutorService service = Executors.newCachedThreadPool();
+        int MAX = Math.max(img.getHeight(),img.getWidth());
         service.execute(new Thread(new Converter(img,SMALL,path +"/"+SMALL,name,FORMAT)));
-        service.execute(new Thread(new Converter(img,MIDDLE,path +"/"+MIDDLE,name,FORMAT)));
-        service.execute(new Thread(new Converter(img,BIG,path +"/"+BIG,name,FORMAT)));
+        if(MAX>=(MIDDLE/1.5)) {
+            service.execute(new Thread(new Converter(img, MIDDLE, path + "/" + MIDDLE, name, FORMAT)));
+            n++;
+        }
+        if(MAX>=(BIG/1.5)) {
+            service.execute(new Thread(new Converter(img, BIG, path + "/" + BIG, name, FORMAT)));
+            n++;
+        }
         service.shutdown();
+        return n;
     }
 }

@@ -1,24 +1,21 @@
 package sand_box.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import sand_box.repositories.AssetRepository;
+import sand_box.repositories.AuthorRepository;
 import sand_box.repositories.PhotoRepository;
-import sand_box.repositories.PictureRepository;
 import sand_box.services.interfaces.AuthorService;
 import sand_box.services.pictures.ImageConverter;
 import sand_box.services.pictures.QrCode;
 import sand_box.tables.Asset;
 import sand_box.tables.Author;
-import sand_box.repositories.AuthorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import sand_box.tables.images.Photo;
-import sand_box.tables.images.Picture;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,11 +98,27 @@ public class AuthorServiceImpl implements AuthorService {
     public void addPhoto(long author_id, MultipartFile file) throws IOException {
         String photo_name = String.valueOf(author_id);
         ImageConverter converter = new ImageConverter(PATH, file.getInputStream(), photo_name);
-        converter.converting();
-
+        int n = converter.converting();
         Author author = authorRepository.findOne(author_id);
-        Photo photo = new Photo(photo_name+".png",PATH, URL+"/"+SMALL+"/"+photo_name,
-                URL+"/"+MIDDLE+"/"+photo_name, URL+"/"+BIG+"/"+photo_name);
+        Photo photo = null;
+        switch(n) {
+            case 1 : {
+                photo = new Photo(photo_name+".png",PATH, URL+"/"+SMALL+"/"+photo_name,
+                        URL+"/"+SMALL+"/"+photo_name, URL+"/"+SMALL+"/"+photo_name);
+                break;
+            }
+            case 2 : {
+                photo = new Photo(photo_name+".png",PATH, URL+"/"+SMALL+"/"+photo_name,
+                        URL+"/"+MIDDLE+"/"+photo_name, URL+"/"+MIDDLE+"/"+photo_name);
+                break;
+            }
+            case 3 : {
+                photo = new Photo(photo_name+".png",PATH, URL+"/"+SMALL+"/"+photo_name,
+                        URL+"/"+MIDDLE+"/"+photo_name, URL+"/"+BIG+"/"+photo_name);
+                break;
+            }
+            default: throw new IOException("Some problems with saving images");
+        }
         author.setPhoto(photo);
         photoRepository.save(photo);
     }
@@ -117,8 +130,17 @@ public class AuthorServiceImpl implements AuthorService {
         Author author = authorRepository.findOne(id);
         byte[] result = null;
         Photo photo = author.getPhoto();
-        File file = new File(photo.getPath()+"/"+size+"/"+photo.getName());
-        try(FileInputStream stream = new FileInputStream(file);) {
+        File file = null;
+        file = new File(photo.getPath()+"/"+size+"/"+photo.getName());
+        if(!file.exists()) {
+            if(size == Integer.parseInt(BIG))
+                file = new File(photo.getPath()+"/"+size+"/"+photo.getName());
+            if(!file.exists()) {
+                if(size == Integer.parseInt(BIG))
+                    file = new File(photo.getPath()+"/"+size+"/"+photo.getName());
+            }
+        }
+        try(FileInputStream stream = new FileInputStream(file)) {
             result = new byte[stream.available()];
             while (stream.available() > 0) {
                 stream.read(result);
@@ -147,5 +169,16 @@ public class AuthorServiceImpl implements AuthorService {
         return result;
     }
 
+//    private File check(String path, long size, String name) {
+//        File file = new File(path+"/"+size+"/"+ name);
+//        if(!file.exists()) {
+//            if(size == Integer.parseInt(BIG))
+//                file = new File(path+"/"+size+"/"+name);
+//            if(!file.exists()) {
+//                if(size == Integer.parseInt(BIG))
+//                    file = new File(path+"/"+size+"/"+name);
+//            }
+//        }
+//    }
 
 }
