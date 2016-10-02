@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef3375e1-a554-4f24-9195-6621c317c31b" name="Default" comment="Rewrite file`s path">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+    <list default="true" id="ef3375e1-a554-4f24-9195-6621c317c31b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sand_box/SecurityConfig.class" afterPath="$PROJECT_DIR$/target/classes/sand_box/SecurityConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sand_box/controllers/UIController.class" afterPath="$PROJECT_DIR$/target/classes/sand_box/controllers/UIController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sand_box/services/AssetServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/sand_box/services/AssetServiceImpl.class" />
@@ -10,15 +9,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sand_box/services/pictures/ImageConverter.class" afterPath="$PROJECT_DIR$/target/classes/sand_box/services/pictures/ImageConverter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/sand_box/tables/images/Photo.class" afterPath="$PROJECT_DIR$/target/classes/sand_box/tables/images/Photo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sand_box/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/sand_box/SecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sand_box/controllers/UIController.java" afterPath="$PROJECT_DIR$/src/main/java/sand_box/controllers/UIController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sand_box/services/AuthorServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/sand_box/services/AuthorServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sand_box/services/pictures/ImageConverter.java" afterPath="$PROJECT_DIR$/src/main/java/sand_box/services/pictures/ImageConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sand_box/tables/images/Photo.java" afterPath="$PROJECT_DIR$/src/main/java/sand_box/tables/images/Photo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/config.properties" afterPath="$PROJECT_DIR$/target/classes/config.properties" />
     </list>
@@ -1461,7 +1452,7 @@
       <workItem from="1474998119528" duration="8774000" />
       <workItem from="1475401707180" duration="2606000" />
       <workItem from="1475411382748" duration="1837000" />
-      <workItem from="1475416447851" duration="7000" />
+      <workItem from="1475416447851" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="Rewrite file`s path">
       <created>1474582251479</created>
@@ -1484,11 +1475,18 @@
       <option name="project" value="LOCAL" />
       <updated>1474807083256</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Rewrite file`s path">
+      <created>1475416466279</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1475416466279</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226976000" />
+    <option name="totallyTimeSpent" value="226992000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1782,6 +1780,45 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1859#1860#0" expanded="false" />
+            <element signature="e#1884#1885#0" expanded="false" />
+            <element signature="e#1918#1919#0" expanded="false" />
+            <element signature="e#1946#1947#0" expanded="false" />
+            <element signature="e#1978#1979#0" expanded="false" />
+            <element signature="e#2006#2007#0" expanded="false" />
+            <element signature="e#2048#2049#0" expanded="false" />
+            <element signature="e#2082#2083#0" expanded="false" />
+            <element signature="e#2120#2121#0" expanded="false" />
+            <element signature="e#2154#2155#0" expanded="false" />
+            <element signature="e#2208#2209#0" expanded="false" />
+            <element signature="e#2254#2255#0" expanded="false" />
+            <element signature="e#2287#2288#0" expanded="false" />
+            <element signature="e#2316#2317#0" expanded="false" />
+            <element signature="e#2360#2361#0" expanded="false" />
+            <element signature="e#2396#2397#0" expanded="false" />
+            <element signature="e#2425#2426#0" expanded="false" />
+            <element signature="e#2453#2454#0" expanded="false" />
+            <element signature="e#2492#2493#0" expanded="false" />
+            <element signature="e#2526#2527#0" expanded="false" />
+            <element signature="e#2555#2556#0" expanded="false" />
+            <element signature="e#2582#2583#0" expanded="false" />
+            <element signature="e#2620#2621#0" expanded="false" />
+            <element signature="e#2652#2653#0" expanded="false" />
+            <element signature="e#2695#2696#0" expanded="false" />
+            <element signature="e#2729#2730#0" expanded="false" />
+            <element signature="e#2788#2789#0" expanded="false" />
+            <element signature="e#2834#2835#0" expanded="false" />
+            <element signature="e#2876#2877#0" expanded="false" />
+            <element signature="e#2907#2908#0" expanded="false" />
+            <element signature="e#2962#2963#0" expanded="false" />
+            <element signature="e#3002#3003#0" expanded="false" />
+            <element signature="e#3039#3040#0" expanded="false" />
+            <element signature="e#3066#3067#0" expanded="false" />
+            <element signature="e#3112#3113#0" expanded="false" />
+            <element signature="e#3144#3145#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
