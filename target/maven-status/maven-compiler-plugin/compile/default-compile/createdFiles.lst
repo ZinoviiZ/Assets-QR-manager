@@ -21,5 +21,4 @@ sand_box/SHA1.class
 sand_box/controllers/UIController.class
 sand_box/tables/login/User_Role.class
 sand_box/Application.class
-sand_box/tables/images/QrCode.class
 sand_box/services/AuthorServiceImpl.class

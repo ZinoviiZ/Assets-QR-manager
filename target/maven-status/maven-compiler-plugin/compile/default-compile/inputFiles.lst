@@ -12,8 +12,8 @@
 /Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/services/AssetServiceImpl.java
 /Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/services/interfaces/AuthorService.java
 /Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/AppConfig.java
-/Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/services/pictures/ImageSaver.java
 /Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/services/interfaces/AssetService.java
+/Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/services/pictures/QrCode.java
 /Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/tables/images/Picture.java
 /Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/tables/images/MainPicture.java
 /Users/Zinoviy/Desktop/Sand Box/Project_QR/src/main/java/sand_box/tables/images/Photo.java

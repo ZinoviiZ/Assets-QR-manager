@@ -20,37 +20,27 @@
     <c:set var="role" scope="session" value="GUEST"/>
     <c:set var="admin" scope="session" value="[ROLE_ADMIN]"/>
 
-    <c:choose>
-        <c:when test="${userRoles eq role}">
-            <h3><a href="/">Your`re ${role}</a></h3>
-            <button type="button" id="authorization_user" class="btn btn-default navbar-btn">Authorization</button>
-        </c:when>
-        <c:otherwise>
-            <h3>Glad to see you ${userName}. You have role:${userRoles} here</h3>
-            <li><button type="button" id="add_asset" class="btn btn-default navbar-btn">Add Asset</button></li>
-            <li><button type="button" id="add_author" class="btn btn-default navbar-btn">Add Author</button></li>
-            <c:if test="${userRoles eq admin}">
-                <button type="button" id="users_page" class="btn btn-default navbar-btn">Users list</button>
-            </c:if>
-        </c:otherwise>
-    </c:choose>
+
     <h3><a href="/">${info}</a></h3>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul id="groupList" class="nav navbar-nav">
+            <c:choose>
+                <c:when test="${userRoles eq role}">
+                    <h3><a href="/">Your`re ${role}</a></h3>
+                    <button type="button" id="authorization_user" class="btn btn-default navbar-btn">Authorization</button>
+                </c:when>
+                <c:otherwise>
+                    <h3>Glad to see you ${userName}. You have role:${userRoles} here</h3>
+                    <ol>
+                        <li style = "display: inline-block"><button type="button" id="add_asset" class="btn btn-default navbar-btn">Add Asset</button></li>
+                        <li style = "display: inline-block"><button type="button" id="add_author" class="btn btn-default navbar-btn">Add Author</button></li>
 
-                    <%--<li class="dropdown">--%>
-                        <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Authors <span class="caret"></span></a>--%>
-                        <%--<ul class="dropdown-menu">--%>
-                            <%--<li><a href="/">Default</a></li>--%>
-                            <%--<c:forEach items="${authors}" var="author">--%>
-                                <%--<li><a href="/group/${author.id}">${author.name}</a></li>--%>
-                            <%--</c:forEach>--%>
-                        <%--</ul>--%>
-                    <%--</li>--%>
-                </ul>
-            </div>
+                    <c:if test="${userRoles eq admin}">
+                        <li style = "display: inline-block"><button type="button" id="users_page" class="btn btn-default navbar-btn">Users list</button></li>
+                    </c:if>
+                    </ol>
+                </c:otherwise>
+            </c:choose>
         </div>
     </nav>
     <h2>Asset`s table</h2>
@@ -62,6 +52,7 @@
             <td><b>Description</b></td>
             <td><b>Price</b></td>
             <td><b>Author</b></td>
+            <td><b>Pictures</b></td>
         </tr>
         </thead>
         <c:forEach items="${assets}" var="asset">
@@ -78,7 +69,9 @@
                         <td>Sam po sebe:)</td>
                     </c:otherwise>
                 </c:choose>
-
+                <td><c:forEach items="${asset.pictures}" var="picture">
+                    <img height="50" width="50" src="${picture.surl}">
+                </c:forEach> </td>
             </tr>
         </c:forEach>
     </table>
@@ -87,6 +80,7 @@
         <thead>
         <tr>
             <td><b>Photo</b></td>
+            <td><b>QR</b></td>
             <td><b>Name</b></td>
             <td><b>Phone</b></td>
             <td><b>Email</b></td>
@@ -95,11 +89,12 @@
         </thead>
         <c:forEach items="${authors}" var="author">
             <tr>
-                <td><img height="50" width="50" src="${author.photo.surl}"></td>
+                <td><img height="50" width="50" src="${author.photo.burl}"></td>
+                <td><img height="50" width="50" src="/author/qr/${author.id}"></td>
                 <td>${author.name}</td>
                 <td>${author.phone}</td>
                 <td>${author.email}</td>
-                <td>${author.website}</td>
+                <td><a href="${author.website}">website</a></td>
             </tr>
         </c:forEach>
     </table>
