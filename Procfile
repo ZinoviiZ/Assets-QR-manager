@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/*.war
+web: java -cp target/classes/:target/*.war sand_box.Application
