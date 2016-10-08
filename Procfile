@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/*.war sand_box.Application
+web: java $JAVA_OPTS -jar target/chat-server-1.0-SNAPSHOT.war
