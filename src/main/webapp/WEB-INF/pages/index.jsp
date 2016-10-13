@@ -47,17 +47,17 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <td><b>Photo</b></td>
+            <%--<td><b>Photo</b></td>--%>
             <td><b>Title</b></td>
             <td><b>Description</b></td>
             <td><b>Price</b></td>
             <td><b>Author</b></td>
-            <td><b>Pictures</b></td>
+            <%--<td><b>Pictures</b></td>--%>
         </tr>
         </thead>
         <c:forEach items="${assets}" var="asset">
             <tr>
-                <td><img height="50" width="50" src="${asset.mainPicture.surl}"></td>
+                <%--<td><img height="50" width="50" src="${asset.mainPicture.surl}"></td>--%>
                 <td>${asset.title}</td>
                 <td>${asset.description}</td>
                 <td>${asset.price}</td>
@@ -70,7 +70,7 @@
                     </c:otherwise>
                 </c:choose>
                 <td><c:forEach items="${asset.pictures}" var="picture">
-                    <img height="50" width="50" src="${picture.surl}">
+                    <%--<img height="50" width="50" src="${picture.surl}">--%>
                 </c:forEach> </td>
             </tr>
         </c:forEach>
@@ -79,8 +79,8 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <td><b>Photo</b></td>
-            <td><b>QR</b></td>
+            <%--<td><b>Photo</b></td>--%>
+            <%--<td><b>QR</b></td>--%>
             <td><b>Name</b></td>
             <td><b>Phone</b></td>
             <td><b>Email</b></td>
@@ -89,8 +89,8 @@
         </thead>
         <c:forEach items="${authors}" var="author">
             <tr>
-                <td><img height="50" width="50" src="${author.photo.burl}"></td>
-                <td><img height="50" width="50" src="/author/qr/${author.id}"></td>
+                <%--<td><img height="50" width="50" src="${author.photo.burl}"></td>--%>
+                <%--<td><img height="50" width="50" src="/author/qr/${author.id}"></td>--%>
                 <td>${author.name}</td>
                 <td>${author.phone}</td>
                 <td>${author.email}</td>
