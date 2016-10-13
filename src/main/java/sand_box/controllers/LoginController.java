@@ -13,7 +13,6 @@ import sand_box.tables.login.User_Role;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.util.LinkedList;
 
 /**
  * Created by Zinoviy on 9/5/16.
@@ -42,7 +41,6 @@ public class LoginController {
                                Model model ) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         User user = new User(login, SHA1.SHA1(password), email, User_Role.EDITOR, new Date(), new Date());
         userService.addUser(user);
-        LinkedList<String> linkedList = new LinkedList<>();
         return "login";
     }
 
