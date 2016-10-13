@@ -23,7 +23,7 @@ public class Application {
         return new CommandLineRunner() {
             @Override
             public void run(String... strings) throws Exception {
-//                userService.addUser(new User("admin", "d033e22ae348aeb5660fc2140aec35850c4da997","zinuk14@gmail.com", User_Role.ADMIN, new Date(), new Date()));
+                userService.addUser(new User("admin", "d033e22ae348aeb5660fc2140aec35850c4da997","zinuk14@gmail.com", User_Role.ADMIN, new Date(), new Date()));
 //                userService.addUser(new User("user", "d033e22ae348aeb5660fc2140aec35850c4da997", User_Role.EDITOR));
             }
         };

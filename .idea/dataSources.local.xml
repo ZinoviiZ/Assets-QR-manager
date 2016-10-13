@@ -10,6 +10,8 @@
     <data-source name="Heroku" uuid="c549308b-b184-4a1f-9739-a28fc55e5181">
       <secret-storage>master_key</secret-storage>
       <user-name>b26bb2027df42c</user-name>
+      <schema-pattern>heroku_9b520da98a523df.*</schema-pattern>
+      <default-schemas>heroku_9b520da98a523df.*</default-schemas>
     </data-source>
   </component>
 </project>
