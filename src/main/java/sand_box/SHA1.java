@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Created by Zinoviy on 9/5/16.
  */
+// Encode for password in SHA1
 public class SHA1 {
     private static String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();

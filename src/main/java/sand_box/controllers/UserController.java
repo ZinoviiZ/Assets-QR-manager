@@ -18,6 +18,7 @@ import java.util.Date;
 /**
  * Created by Zinoviy on 9/9/16.
  */
+// Controller for interaction with user data
 @Controller
 @RequestMapping("/admin")
 public class UserController {

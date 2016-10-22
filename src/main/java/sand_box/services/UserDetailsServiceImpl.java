@@ -11,7 +11,7 @@ import sand_box.services.interfaces.UserService;
 
 import java.util.HashSet;
 import java.util.Set;
-
+//Spring Security checking
 @Service
 public class  UserDetailsServiceImpl implements UserDetailsService {
     @Autowired

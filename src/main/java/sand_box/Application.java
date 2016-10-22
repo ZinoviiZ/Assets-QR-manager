@@ -10,7 +10,7 @@ import sand_box.tables.login.User_Role;
 
 import java.util.Date;
 import java.util.TimeZone;
-
+//Start Spring boot apclication
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {

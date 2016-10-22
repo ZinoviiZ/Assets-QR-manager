@@ -14,6 +14,8 @@ import java.util.List;
 /**
  * Created by Zinoviy on 8/24/16.
  */
+// RestController for giving information about Author to Android
+
 @RestController
 @RequestMapping("/api/author")
 public class RestAuthorController {

@@ -17,6 +17,7 @@ import java.util.Date;
 /**
  * Created by Zinoviy on 9/5/16.
  */
+// Controllers for login
 @Controller
 @RequestMapping("/login")
 public class LoginController {

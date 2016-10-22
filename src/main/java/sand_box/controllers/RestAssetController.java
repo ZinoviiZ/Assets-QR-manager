@@ -14,6 +14,7 @@ import java.util.Set;
 /**
  * Created by Zinoviy on 8/24/16.
  */
+// RestController for giving information about Asset to Android
 @RestController
 @RequestMapping("/api/asset")
 public class RestAssetController {

@@ -25,12 +25,13 @@ import javax.servlet.MultipartConfigElement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+//Spring`s settings
 @Configuration
 @PropertySource("classpath:config.properties")
 @EnableTransactionManagement
 @EnableWebMvc
 public class AppConfig {
-    @Value("${hibernate.dialect}")
+    @Value("${hibernate.(dialect}")
     private String sqlDialect;
 
     @Value("${hbm2ddl.auto}")

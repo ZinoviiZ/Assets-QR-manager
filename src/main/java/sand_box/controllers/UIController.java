@@ -23,6 +23,8 @@ import java.util.List;
 /**
  * Created by Zinoviy on 9/5/16.
  */
+
+// MVCControler for UI
 @Controller
 public class UIController {
     static final int DEFAULT_ID = -1;

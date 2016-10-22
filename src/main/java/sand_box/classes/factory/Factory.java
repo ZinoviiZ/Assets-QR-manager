@@ -5,6 +5,7 @@ package sand_box.classes.factory;
  * Created by Zinoviy on 9/19/16.
  */
 
+// Response classes
 public class Factory {
     public static Asset getAsset(sand_box.tables.Asset asset) {
         return AssetFactory.createEntity(asset);
